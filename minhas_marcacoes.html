@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Marcações - PetShop Felicidade Animal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a.active {
+            background-color: #4CAF50;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea,
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        .calendar {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .calendar div {
+            width: 14%;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 2px;
+        }
+        .calendar div.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .calendar div:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+    <script>
+        function selectDate(element) {
+            const selected = document.querySelector('.calendar div.selected');
+            if (selected) {
+                selected.classList.remove('selected');
+            }
+            element.classList.add('selected');
+            document.getElementById('selected-date').value = element.dataset.date;
+            // Simulate showing available slots for selected date
+            document.getElementById('available-slots').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>PetShop Felicidade Animal</h1>
+        <p>Agende um banho ou tosa para seu pet!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="minha_conta.html">Minha Conta</a>
+        <a href="minhas_marcacoes.html" class="active">Minhas Marcações</a>
+        <a href="contato.html">Contato</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="carrinho_de_compras.html">Carrinho de Compras</a>
+    </nav>
+
+    <main>
+        <h2>Agendamento de Serviço</h2>
+        <form>
+            <!-- Dados do Pet -->
+            <fieldset>
+                <legend>Informações do Pet</legend>
+                <div class="form-group">
+                    <label for="nome-pet">Nome do Pet:</label>
+                    <input type="text" id="nome-pet" name="nome-pet" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo-pet">Tipo de Pet:</label>
+                    <select id="tipo-pet" name="tipo-pet" required>
+                        <option value="cao">Cão</option>
+                        <option value="gato">Gato</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tamanho-pet">Tamanho:</label>
+                    <select id="tamanho-pet" name="tamanho-pet" required>
+                        <option value="pequeno">Pequeno</option>
+                        <option value="medio">Médio</option>
+                        <option value="grande">Grande</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- Escolha da Data -->
+            <fieldset>
+                <legend>Escolha a Data</legend>
+                <div class="calendar">
+                    <div data-date="2024-09-01" onclick="selectDate(this)">01</div>
+                    <div data-date="2024-09-02" onclick="selectDate(this)">02</div>
+                    <div data-date="2024-09-03" onclick="selectDate(this)">03</div>
+                    <div data-date="2024-09-04" onclick="selectDate(this)">04</div>
+                    <div data-date="2024-09-05" onclick="selectDate(this)">05</div>
+                    <div data-date="2024-09-06" onclick="selectDate(this)">06</div>
+                    <!-- Add more dates as needed -->
+                </div>
+                <input type="hidden" id="selected-date" name="selected-date">
+            </fieldset>
+
+            <!-- Disponibilidade e Escolha do Serviço -->
+            <fieldset id="available-slots" style="display: none;">
+                <legend>Horários Disponíveis</legend>
+                <div class="form-group">
+                    <label>Escolha o Serviço:</label>
+                    <input type="radio" id="servico-banho" name="servico" value="banho" required>
+                    <label for="servico-banho">Banho</label>
+                    <input type="radio" id="servico-tosa" name="servico" value="tosa" required>
+                    <label for="servico-tosa">Tosa</label>
+                </div>
+                <div class="form-group">
+                    <label>Escolha o Horário:</label>
+                    <select id="horario" name="horario" required>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="telebusca">Deseja agendar uma tele-busca?</label>
+                    <input type="checkbox" id="telebusca" name="telebusca">
+                    <label for="telebusca">Sim, agendar tele-busca</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Agendar</button>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop Felicidade Animal. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

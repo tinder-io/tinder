@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - PetShop Felicidade Animal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a.active {
+            background-color: #4CAF50;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        .form-group button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PetShop Felicidade Animal</h1>
+        <p>Cadastre-se para os nossos serviços!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="minha_conta.html">Minha Conta</a>
+        <a href="minhas_marcacoes.html">Minhas Marcações</a>
+        <a href="contato.html">Contato</a>
+        <a href="cadastro.html" class="active">Cadastro</a>
+        <a href="carrinho_de_compras.html">Carrinho de Compras</a>
+    </nav>
+
+    <main>
+        <h2>Formulário de Cadastro</h2>
+        <form>
+            <!-- Dados do Cliente -->
+            <fieldset>
+                <legend>Dados do Cliente</legend>
+                <div class="form-group">
+                    <label for="nome-cliente">Nome:</label>
+                    <input type="text" id="nome-cliente" name="nome-cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" placeholder="12-3456-7890" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </fieldset>
+
+            <!-- Dados do Pet -->
+            <fieldset>
+                <legend>Dados do Pet</legend>
+                <div class="form-group">
+                    <label for="nome-pet">Nome:</label>
+                    <input type="text" id="nome-pet" name="nome-pet" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo-pet">Tipo:</label>
+                    <select id="tipo-pet" name="tipo-pet" required>
+                        <option value="cao">Cão</option>
+                        <option value="gato">Gato</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="raca-pet">Raça:</label>
+                    <input type="text" id="raca-pet" name="raca-pet">
+                </div>
+                <div class="form-group">
+                    <label for="temperamento-pet">Temperamento:</label>
+                    <textarea id="temperamento-pet" name="temperamento-pet" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Sexo:</label>
+                    <input type="radio" id="sexo-macho" name="sexo-pet" value="macho">
+                    <label for="sexo-macho">Macho</label>
+                    <input type="radio" id="sexo-femea" name="sexo-pet" value="femea">
+                    <label for="sexo-femea">Fêmea</label>
+                </div>
+                <div class="form-group">
+                    <label for="data-nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data-nascimento" name="data-nascimento">
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop Felicidade Animal. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

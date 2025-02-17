@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - PetShop Felicidade Animal</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function addToCart(productName, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let product = cart.find(item => item.name === productName);
+            if (product) {
+                product.quantity += 1;
+            } else {
+                cart.push({ name: productName, price: price, quantity: 1, image: image });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Produto adicionado ao carrinho!');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>PetShop Felicidade Animal</h1>
+        <p>Os melhores produtos para o seu pet!</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html" class="active">Produtos</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="minha_conta.html">Minha Conta</a>
+        <a href="minhas_marcacoes.html">Minhas Marcações</a>
+        <a href="contato.html">Contato</a>
+        <a href="carrinho_de_compras.html">Carrinho de Compras</a>
+        <a href="cadastro.html" class="active">Cadastro</a>
+    </nav>
+
+    <main>
+        <h2>Produtos</h2>
+        <div class="produto">
+            <img src="racao1.png" alt="Ração Úmida" width="100" height="100">
+            <h3>Ração Úmida</h3>
+            <p>Preço: R$ 25,00</p>
+            <button onclick="addToCart('Ração Úmida', 25, 'racao1')">Comprar</button>
+
+        </div>
+        <div class="produto">
+            <img src="racao1.png" alt="Ração Seca"width="100" height="100"s>
+            <h3>Ração Seca</h3>
+            <p>Preço: R$ 20,00</p>
+            <button onclick="addToCart('Ração Seca', 20)">Comprar</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop Felicidade Animal. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
